@@ -1,4 +1,5 @@
 import { reactive } from "vue";
+import { bodyOverflowService } from "@/service/body-overflow";
 
 const store = ({
     state: reactive({
@@ -12,9 +13,11 @@ const store = ({
     mutations: {
         showPopup() {
             store.state.popup = true;
+            bodyOverflowService.addBodyOverflow();
         },
         hidePopup() {
             store.state.popup = false;
+            bodyOverflowService.removeBodyOverflow();
         }
     },
     actions: {
