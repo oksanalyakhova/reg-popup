@@ -1,0 +1,116 @@
+/* responsive */
+$mobile-width: 320px;
+$small-width: 576px;
+$tablet-width: 768px;
+$tablet-plus-width: 1180px;
+$laptop-width: 1200px;
+$desktop-width: 1440px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop-width}) {
+    @content;
+  }
+}
+
+@mixin laptop {
+  @media (min-width: #{$laptop-width}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$tablet-width}) {
+    @content;
+  }
+}
+
+@mixin tablet-plus {
+  @media (min-width: #{$laptop-width}) {
+    @content;
+  }
+}
+
+@mixin small { // 576  -> 0
+  @media (max-width: #{$small-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile { // 767 -> 0
+  @media (max-width: #{$tablet-width - 1px}) {
+    @content;
+  }
+}
+
+@mixin mobile-landscape { // 767 -> 0
+  @media (max-width: #{$tablet-width - 1px}) and (orientation: landscape) {
+    @content;
+  }
+}
+
+@mixin media-max($size) {
+  @media only screen and (max-width: $size + 'px') {
+    @content
+  }
+}
+
+@mixin media-min($size) {
+  @media only screen and (min-width: $size + 'px') {
+    @content
+  }
+}
+
+// custom mixins
+@mixin anim($param: all, $dur: 0.35s, $type: ease-in-out, $delay: 0s) {
+  transition: $param $dur $type $delay;
+}
+
+@mixin bp($point, $type: min) {
+  @media screen and (#{$type}-width: #{$point}px) {
+    @content;
+  }
+}
+
+@mixin pseudo($display: block, $pos: absolute, $content: '') {
+  content: $content;
+  display: $display;
+  position: $pos;
+}
+
+
+@mixin hover {
+  &:hover,
+  &:active,
+  &:focus,
+  &:focus-visible {
+    @content;
+    outline: none;
+    box-shadow: none;
+  }
+}
+
+@mixin fullHeight() {
+  height: 100vh;
+  height: calc(var(--vh, 1vh) * 100);
+}
+
+@mixin fullHeightMin() {
+  min-height: 100vh;
+  min-height: calc(var(--vh, 1vh) * 100);
+}
+
+@mixin abs-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin image-cover {
+  max-width: none;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
