@@ -46,7 +46,7 @@ export default defineComponent({
   font-weight: 700;
   white-space: nowrap;
   color: $c-white;
-  background-color: transparent;
+  background-color: $c-theme;
   border: 1px solid $c-theme;
   border-radius: 100px;
   outline: none;
@@ -57,6 +57,7 @@ export default defineComponent({
 
   @include hover {
     color: $c-theme;
+    background-color: transparent;
 
     &::before {
       transform: scaleY(0);

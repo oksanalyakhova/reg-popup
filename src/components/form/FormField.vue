@@ -1,6 +1,6 @@
 <template>
   <div
-    :class="$options.className">
+    :class="[$options.className, propsClassName]">
     <label :for="inputId" :class="`${$options.className}__label`">
       {{ label }}
     </label>
@@ -15,6 +15,7 @@ export default {
   name: "FormField",
   className: "FormField",
   props: {
+    propsClassName: [String, Object],
     inputId: {
       type: String,
       required: true,
@@ -31,6 +32,11 @@ export default {
 @import "../../assets/styles/setup.scss";
 
 .FormField {
+  &.has-tel {
+    position: relative;
+    z-index: 100;
+  }
+
   &__label {
     display: block;
     margin-bottom: 8px;

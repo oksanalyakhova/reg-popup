@@ -79,13 +79,18 @@ $desktop-width: 1440px;
 
 
 @mixin hover {
-  &:hover,
-  &:active,
-  &:focus,
-  &:focus-visible {
+  &:hover {
     @content;
-    outline: none;
-    box-shadow: none;
+  }
+
+  &:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  &:focus-within {
+    outline: none !important;
+    box-shadow: none !important;
   }
 }
 

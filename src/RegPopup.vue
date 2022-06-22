@@ -23,7 +23,7 @@
               v-for="(field, index) in fields"
               :key="index"
               :input-id="field.field"
-              :label="field.label">
+              :label="field.label" :props-class-name="{'has-tel': field.type === 'tel'}">
 
             <FormInput
                 v-if="field.type"

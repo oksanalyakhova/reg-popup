@@ -105,12 +105,10 @@ export default defineComponent({
     background-color: transparent;
     border: 1px solid $c-border;
     border-radius: 8px;
-    -webkit-appearance: none;
+    -webkit-appearance: none !important;
     @include anim();
 
-    &:focus,
-    &:focus-visible,
-    &:active {
+    &:focus {
       box-shadow: none;
       border: 1px solid $c-border;
       outline: none !important;
@@ -127,35 +125,82 @@ export default defineComponent({
 @import "../../assets/styles/setup.scss";
 
 .FormInput {
+  input {
+    font-size: map-get($font-sizes, text-2);
+  }
+
   &__input {
     &.is-tel {
-      @include hover {
-        box-shadow: none;
+      border: none;
+      @include hover;
+
+      &::before {
+        @include pseudo();
+        top: 0;
+        left: 70px;
+        z-index: 1;
+        width: 1px;
+        height: 100%;
+        background-color: $c-border;
       }
 
       .vti {
         &__dropdown {
           position: unset;
+          z-index: 1;
+          margin-left: 4px;
           padding: 0;
 
           @include hover {
             background-color: transparent;
           }
+
+          &.disabled,
+          &.open {
+            background-color: transparent;
+          }
+        }
+
+        &__dropdown-arrow {
+          color: $c-dark;
+          transform: scaleX(1) scaleY(.6);
         }
 
         &__dropdown-list {
           top: 50px;
           z-index: 100;
+          padding: 12px 4px;
           width: calc(100% + 2px);
           border-radius: 8px;
         }
 
+        &__dropdown-item {
+          @include hover;
+
+          &.highlighted {
+            background-color: transparent;
+          }
+        }
+
         &__flag {
-          margin: 0 8px 0 0;
+          margin: 0 12px 0 0;
           width: 15px;
           height: 15px;
           border-radius: 50%;
-          transform: scale(1.3);
+          transform: scale(1.4);
+        }
+
+        &__input {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          padding: 12px 14px 12px 87px;
+          background-color: transparent;
+          border: 1px solid $c-border;
+          border-radius: 8px;
+          -webkit-appearance: none;
         }
       }
     }
